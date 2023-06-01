@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const postModal = require("./post-modal");
 const app = express();
+app.use(cors());
 mongoose.set("strictQuery", false);
 
 app.listen(process.env.PORT || 4000, () => {
@@ -12,7 +13,6 @@ app.listen(process.env.PORT || 4000, () => {
 
 app.use(express.json({ limit: "50mb" }));
 //app.use(express.urlencoded({limit: '50mb'}));
-app.use(cors());
 const DB =
   "mongodb+srv://userpost:2In5Ye4yGpKowua3@cluster0.w0dduvf.mongodb.net/?retryWrites=true&w=majority";
 mongoose
@@ -29,9 +29,10 @@ app.get("/", (req, res) => {
 });
 
 app.post("/add", (req, res) => {
+  // const {name}=req.body
   postModal
     .create({
-      name: req.body.name,
+      name: req.body.name, //name
       location: req.body.location,
       likes: req.body.likes,
       description: req.body.description,
