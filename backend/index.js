@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to instaclone app : server side code");
 });
 
+
 app.post("/add", (req, res) => {
   // const {name}=req.body
   postModal
@@ -54,6 +55,7 @@ app.get("/posts", (req, res) => {
       // console.log(time,likes)
     })
     .catch((err) => {
+      console.log(err)
       res.status(400).send(err);
     });
 });
